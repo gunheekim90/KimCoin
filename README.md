@@ -1,6 +1,6 @@
 ```bash
-$ mkdir jocoin
-$ cd jocoin
+$ mkdir KimCoin
+$ cd KimCoin
 $ truffle init
 ```
 
@@ -61,11 +61,11 @@ contract MetaCoin {
 > Create the contract for your token
 
 ```solidity
-// contracts/JoCoin.sol
+// contracts/KimCoin.sol
 
 pragma solidity ^0.4.18;
 
-contract JoCoin {
+contract KimCoin {
     // public store of all balances
     mapping (address => uint256) public balanceOf;
     string public name;
@@ -77,10 +77,10 @@ contract JoCoin {
     }
 
     // define initial supply tokens to the creator of the contract
-    function JoCoin(uint256 initialSupply) public {
+    function KimCoin(uint256 initialSupply) public {
         // give the creator all of the initial supply
         balanceOf[msg.sender] = initialSupply;
-        name = "JoCoin";
+        name = "KimCoin";
         symbol = "JCN";
         decimals = 2;
     }
@@ -92,16 +92,16 @@ contract JoCoin {
 ```javascript
 var ConvertLib = artifacts.require('./ConvertLib.sol');
 var Metacoin = artifacts.require('./Metacoin.sol');
-var JoCoin = artifacts.require('./JoCoin.sol');
+var KimCoin = artifacts.require('./KimCoin.sol');
 
 module.exports = function(deployer) {
   deployer.deploy(ConvertLib);
   deployer.link(ConvertLib, Metacoin);
   deployer.deploy(Metacoin);
   // total amount of coins
-  deployer.deploy(JoCoin, 10000000000000000000000).then(function() {
+  deployer.deploy(KimCoin, 10000000000000000000000).then(function() {
     // you will need the address to add your token to metamask
-    console.log('\n\n\naddress:', JoCoin.address);
+    console.log('\n\n\naddress:', KimCoin.address);
   });
 };
 ```
